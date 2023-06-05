@@ -1,0 +1,37 @@
+# Node.js
+node_modules/
+dist/
+
+# Logs
+logs/
+*.log
+
+# Build artifacts
+build/
+dist/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# Testing artifacts
+coverage/
+
+# Playwright
+playwright.config.js
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Custom ignore rules
+# Add any additional files or directories to ignore below this line
