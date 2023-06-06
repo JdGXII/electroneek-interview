@@ -23,7 +23,7 @@ npm install
 
 ## Usage
 
-1. Write your test scenarios using Playwright in TypeScript. You can find example tests in the `tests` directory.
+1. Write your test scenarios using Playwright in TypeScript. 
 2. Run the tests using the following command:
 
 ```bash
@@ -31,6 +31,33 @@ npm test
 ```
 
 This will execute the tests using Jest.
+---
+
+## Running the Tests and Generating the Report
+
+To run the tests and generate the HTML report, follow these steps:
+
+1. Make sure you have all the dependencies installed by running:
+
+   ```bash
+   npm install
+   ```
+
+2. Execute the tests using Jest:
+
+   ```bash
+   npx jest
+   ```
+
+   This command will run your tests and generate the HTML report.
+
+3. After the tests complete, you can find the generated report in the specified output path. By default, the report is saved in `./test-report.html`.
+
+## Viewing the Report
+
+To view the generated HTML report, open the file `test-report.html` in a web browser of your choice. The report provides detailed information about the test results, including the number of passed and failed tests, test duration, and any error messages or stack traces.
+
+The report also includes a summary section that gives an overview of the test run, such as the total number of tests executed and the overall pass percentage.
 
 ## Structure
 
