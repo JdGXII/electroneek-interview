@@ -5,7 +5,7 @@ describe('E2E Tests', () => {
   let page: Page;
 
   beforeAll(async () => {
-    browser = await chromium.launch();
+    browser = await chromium.launch({ headless: true });
   });
 
   beforeEach(async () => {
@@ -39,8 +39,6 @@ describe('E2E Tests', () => {
   });
 
   test('Invalid Login - Verify Error Message', async () => {
-    await page.goto('https://www.saucedemo.com/');
-  
     // Enter invalid username and password
     await page.fill('#user-name', 'invaliduser');
     await page.fill('#password', 'invalidpassword');
@@ -53,26 +51,26 @@ describe('E2E Tests', () => {
     expect(errorMessage).toBe('Epic sadface: Username and password do not match any user in this service');
   });
 
-  test('Cart Functionality - Verify Add and Remove Items', async () => {
-    await page.goto('https://www.saucedemo.com/');
-  
+  test('Cart Functionality - Verify Add and Remove Items', async () => {  
     // Login with valid credentials
     await page.fill('#user-name', 'standard_user');
     await page.fill('#password', 'secret_sauce');
     await page.click('#login-button');
   
-    // Add item to cart
-    await page.click('.btn_inventory');
-    await page.click('.shopping_cart_link');
+    // Add item to cart    
+    await page.click('[data-test="add-to-cart-sauce-labs-backpack"]');    
+    await page.click('#shopping_cart_container');
   
     // Verify item in the cart
-    const cartItems = await page.$$('.cart_item');
+    let cartItems = await page.$$('.cart_item');
     expect(cartItems.length).toBe(1);
   
     // Remove item from cart
-    await page.click('.cart_item .btn_secondary');
-    const emptyCartMessage = await page.textContent('.cart_list');
-    expect(emptyCartMessage).toContain('Your cart is empty');
+    await page.click('.btn.btn_secondary.btn_small.cart_button');
+
+    //Verify no items in cart
+    cartItems = await page.$$('.cart_item');
+    expect(cartItems.length).toBe(0);
   });
-  
+
 });
