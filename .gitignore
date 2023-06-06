@@ -35,3 +35,4 @@ Thumbs.db
 
 # Custom ignore rules
 # Add any additional files or directories to ignore below this line
+*.html
